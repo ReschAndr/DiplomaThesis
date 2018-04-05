@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Socket Example</title>
+    <script type="text/javascript" src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+        $(function () {
+
+            //creates a socket connectoin to the server example
+            var socket = io.connect('http://127.0.0.1:3000');
+
+            //sets a function that is called when the server sends a 'loggedin' call
+            socket.on('loggedin', (data) => {
+
+                console.log(data);
+
+                window.alert('You have logged in!! :)');
+            });
+
+            //Sets a funtion that is executed when the login button is clicked
+            $('#login').on('click', () => {
+                //sends a login call to the server
+                socket.emit('login', 'Smith');
+            });
+        });
+    </script>
+</head>
+<body>
+    <!-- Login Button -->
+    <button id="login">Login</button>
+</body>
+</html>

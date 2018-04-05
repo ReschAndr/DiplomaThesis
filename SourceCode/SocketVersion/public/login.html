@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Layout Generator</title>
+    <script type="text/javascript" src="javascripts/jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="javascripts/socket.io.js"></script>
+    <script type="text/javascript" src="javascripts/login.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron center-block">
+            <div class="container" style="width:450px; position:center">
+                <div class="input-group input-group-lg" style="width:100%">
+                    <h2>Username</h2>
+                    <input id="username" class="form-control" type="text" placeholder="Username" name="username" required>
+                </div>
+                <div class="input-group input-group-lg" style="width:100%">
+                    <h2>Password</h2>
+                    <input id="password" class="form-control" type="password" placeholder="Password" name="password" required>
+                </div>
+                <div class="btn-group" style="margin-top:20px; width:100%;padding:5px">
+                    <button class="btn btn-primary btn-lg" style="width:33%" id="login">Login</button>
+                    <button class="btn btn-primary btn-lg" style="width:33%" id="training">Training</button>
+                    <button class="btn btn-primary btn-lg" style="width:33%" id="newuser">New User</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

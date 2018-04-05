@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Editor</title>
+    <meta charset="UTF-8">
+    <!--JavaScript-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="text/javascript" src="javascripts/TweenLite.js"></script>
+    <script type="text/javascript" src="javascripts/Draggable.js"></script>
+    <script type="text/javascript" src="javascripts/CSSPlugin.js"></script>
+    <script type="text/javascript" src="javascripts/jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="javascripts/knockout-3.4.2.debug.js"></script>
+    <script type="text/javascript" src="javascripts/convnet.js"></script>
+    <script type="text/javascript" src="javascripts/socket.io.js"></script>
+    <script type="text/javascript" src="javascripts/training.js"></script>
+    <script type="text/javascript" src="javascripts/editor.js"></script>
+    <script type="text/javascript" src="javascripts/canvasDrawSnippet.js"></script>
+    <!--CSS-->
+    <link rel="stylesheet" href="stylesheets/editor.css">
+    <link rel="stylesheet" href="stylesheets/jquery-ui.css">
+</head>
+<body data-bind="event:{click:hideContext}">
+    <div id="range" data-bind="event:{dblclick:rangeClick,click:setRange}, template:{name: 'elementTemplate',foreach:elementArray()}">
+    </div>
+    <div id="sideDiv">
+        <div id="mySidenav" class="sidenav">
+            <button type="button" id="btnDownload" onclick="doDownload()">Download</button>
+            <button id="delBtn" data-bind="enable:chosenObject().internalID()!='range',event:{click:delElement}">DELETE</button>
+            <button id="toTrainer" data-bind="event:{click:toTrainer}">Trainer</button>
+            <button id="load" data-bind="event:{click:loadFromJson}">Load</button>
+            <button id="toViewer" onclick="window.open('/Viewer.html')">Viewer</button>
+            <div id="treeModel">
+                <ul id="rootList" class="childList">
+                    <li>
+                        <a data-bind="event:{click:setRange}">range [root]</a>
+                        <ul class="childList" data-bind="template:{name:'treeTemplate',foreach:elementArray()}"></ul>
+                    </li>
+                </ul>
+            </div>
+            <div data-bind="with:chosenObject">
+                <div id="mainProps" data-bind="template:{name:'propControlTemplate',foreach:[
+                    {name:'ID',value:id,type:'text',propName:'id'},
+                    {name:'Position X',value:x,type:'number',propName:'x'},
+                    {name:'Position Y',value:y,type:'number',propName:'y'},
+                    {name:'Width',value:w,type:'number',propName:'w'},
+                    {name:'Height',value:h,type:'number',propName:'h'}]}">
+                </div>
+            </div>
+            <textarea id="JSONField"></textarea>
+        </div>
+    </div>
+    <div id="canDiv">
+        <a id="closeCan" data-bind="event:{click:closeCan}">X</a>
+        <a id="finishCan" data-bind="event:{click:getType}">Finish</a>
+        <canvas id="can" width="400" height="400"></canvas>
+    </div>
+    <div id='contextmenuReplacer' data-bind="with:chosenObject">
+        <p>innerhtml:</p>
+        <textarea id='innertextTArea' data-bind="value:innerTextString, valueUpdate:'keyup'"></textarea>
+        <p>additional style tags</p>
+        <p>format: property:value;</p>
+        <textarea id='styleTArea' data-bind="value:styleString, valueUpdate:'keyup'"></textarea>
+    </div>
+
+    <!--Templates-->
+    <script type="text/html" id="elementTemplate">
+        <div class="draggable" data-bind="attr:{id:internalID},event:{dblclick:objDblClick,contextmenu:rightClicked, click:updateCO}, dragResize:{parent:parent,x:x,y:y,h:h,w:w,id:id,last:self.chosenObject}">
+
+            <div data-bind="template:{name: 'elementTemplate',foreach:childNodes()}">
+            </div>
+            <img src="res/Download.png" class="mapClass" alt="Element" />
+            <label class="labelType" data-bind="text:type().label"></label>
+        </div>
+    </script>
+    <script type="text/html" id="propControlTemplate">
+        <div class="textControl">
+            <p class="propName" data-bind="text:name"></p>
+            <input data-bind="enable:self.chosenObject().id()!='range',value:value, attr:{type:type},change:">
+        </div>
+    </script>
+
+    <script type="text/html" id="treeTemplate">
+        <li>
+            <a data-bind="class:id(),text:id(),event:{click:updateCO}"></a>
+            <ul class="childList" data-bind="template:{name:'treeTemplate',foreach:childNodes()}"></ul>
+        </li>
+    </script>
+</body>
+</html>

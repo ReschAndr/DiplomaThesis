@@ -1,0 +1,34 @@
+﻿body {
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    background-color: azure;
+}
+
+   
+.option{
+    font-size:large;
+}
+
+.toserver{
+    display:none;
+    font-size:large;
+}
+
+.button-group{
+    display:inline-block;
+    width:100%;
+    align-items:center;
+}
+
+.result{
+    display:list-item;
+}
+
+canvas{
+    background-color:white;
+}
+
+.selectedtype{
+    background-color: gray;
+}
+

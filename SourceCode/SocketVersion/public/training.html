@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>ImageFactory</title>
+        <script type="text/javascript" src="javascripts/jquery-3.2.1.js"></script>
+        <script type="text/javascript" src="javascripts/canvasDrawSnippet.js"></script>
+        <script type="text/javascript" src="javascripts/convnet.js"></script>
+        <script type="text/javascript" src="javascripts/socket.io.js"></script>
+        <script type="text/javascript" src="javascripts/training.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="stylesheets/training.css" />
+    </head>
+    <body>
+        <div class="container" style="text-align:center">
+            <p>
+                <h1 id="act-pressed-btn" class="option">
+                    Draw Sketch for:
+                </h1>
+            </p>
+            <div class="btn-group btn-lg" id="types"></div>
+            <div class="container">
+                <canvas id="can" width="400" height="400" style="border: 2px solid black"></canvas>
+            </div>
+            <div class="btn-group btn-lg">
+                <button id="saveactdrawing" class="btn btn-primary btn-lg">
+                    Save
+                </button>
+                <button id="clearcanv" class="btn btn-primary btn-lg">
+                    Clear
+                </button>
+                <button id="newtrainingtask" class="btn btn-primary btn-lg">
+                    New Training Task
+                </button>
+                <button id="newtestingtask" class="btn btn-primary btn-lg">
+                    New Testing Task
+                </button>
+                <button id="gettype" class="btn btn-primary btn-lg">
+                    Test
+                </button>
+            </div>
+        </div>
+            <div class="container">
+                <ul id="possibilities">
+
+                </ul>
+            </div>
+    </body>
+</html>
