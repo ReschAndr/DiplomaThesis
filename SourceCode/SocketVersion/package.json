@@ -15,7 +15,7 @@
     "convnetjs": "^0.3.0",
     "cookie-parser": "^1.4.0",
     "debug": "^2.2.0",
-    "express": "^4.14.0",
+    "express": "^4.17.3",
     "forever-monitor": "^1.7.1",
     "http": "0.0.0",
     "jquery": "^3.2.1",
