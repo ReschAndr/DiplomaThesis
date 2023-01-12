@@ -14,7 +14,7 @@
     "circular-json": "^0.3.3",
     "convnetjs": "^0.3.0",
     "cookie-parser": "^1.4.0",
-    "debug": "^2.2.0",
+    "debug": "^2.6.9",
     "express": "^4.14.0",
     "forever-monitor": "^1.7.1",
     "http": "0.0.0",
